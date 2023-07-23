@@ -1,25 +1,18 @@
 from flask import Flask, jsonify
-from database.connect_db import create_connection
-from models.queries import get_preguntas
+from models.queries import get_all_preguntas
 from flask_cors import CORS
-
-
-
-
-
 app = Flask(__name__)
 CORS(app)
-
+# Ruta para obtener todas las preguntas
 @app.route('/Preguntas', methods=['GET'])
-def preguntas():
-    try:
-        preguntas = get_preguntas()
-        return jsonify(preguntas)
+def obtener_preguntas():
+    preguntas = get_all_preguntas()
+    return jsonify(preguntas)
 
-    except Exception as e:
-        return jsonify({'error': str(e)})
+# Aquí puedes definir más rutas para obtener respuestas, temarios, niveles, etc.
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
