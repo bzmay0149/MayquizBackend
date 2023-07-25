@@ -10,4 +10,3 @@ def create_connection():
     }
     connection = mysql.connector.connect(**db_config)
     return connection
-   
